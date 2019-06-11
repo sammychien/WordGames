@@ -39,9 +39,8 @@ public class Coordinate {
 		return new Coordinate(row, col);
 	}
 	
-	public static int calcIndexfromCoord(int paramRows, int paramCols, int row, int col) {
-		// TODO: finish this function
-		return 0;
+	public static int calcIndexfromCoord(int paramCols, int row, int col) {
+		return row * paramCols + col;
 	}
 	
 	@Override

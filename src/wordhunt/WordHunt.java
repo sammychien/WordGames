@@ -99,7 +99,7 @@ public class WordHunt {
 		
 		// make prefix
 		String prefix = "";
-		prefix += currentTile.getC();
+		prefix += currentTile.getLetter();
 		
 		// Let's begin to do this BFS stuff
 		

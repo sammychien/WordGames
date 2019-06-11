@@ -26,6 +26,15 @@ public class Grid {
 	 */
 	public boolean checkUsedFlag(Coordinate coords) {
 		// TODO: finish this function 
+		// also want to throw an error if something happens here
+		int coordsX = coords.getCol(); int coordsY = coords.getRow();
+		Tile tileAtCoord = tiles.get(Coordinate.calcIndexfromCoord(Params.COLS, coordsY, coordsX));	
+		// this should be the tile that we're talking about.
+		// double check that tileAtCoord has the same coordinates as coordsX and coordsY
+		if (!(coordsX == tileAtCoord.getCoordinate().getCol() && coordsY == tileAtCoord.getCoordinate().getRow())) {
+			// throw new exception here
+		}
+		
 		return false;
 	}
 

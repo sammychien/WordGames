@@ -5,7 +5,7 @@ public class Tile {
 	private Coordinate coords;
 	private boolean isUsed;
 	
-	public String getC() {
+	public String getLetter() {
 		return c;
 	}
 
