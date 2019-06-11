@@ -39,6 +39,11 @@ public class Coordinate {
 		return new Coordinate(row, col);
 	}
 	
+	public static int calcIndexfromCoord(int paramRows, int paramCols, int row, int col) {
+		// TODO: finish this function
+		return 0;
+	}
+	
 	@Override
 	public boolean equals(Object o) {
 		if (o == this) return true;

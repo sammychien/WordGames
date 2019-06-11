@@ -140,8 +140,10 @@ public class WordHunt {
 			resultList.add(prefix);
 		} // keep going since there might be more words
 		
-		// now check all surrounding tiles
-		
+		/*
+		 * Now check all surrounding tiles
+		 * First check 
+		 */
 		
 		
 		
@@ -160,7 +162,59 @@ public class WordHunt {
 		return false;
 	}
 	
-	
+	/*
+	 * Determines ability to move based on current coordinates and direction. 
+	 * 0: E
+	 * 1: NE
+	 * 2: N
+	 * 3: NW
+	 * 4: W
+	 * 5: SW
+	 * 6: S
+	 * 7: SE
+	 * 
+	 * if parameter "direction" is not an integer between [0,7], then function will return false.
+	 */
+	private static boolean ableToMove(int direction, Grid grid, Coordinate coords) {
+		// use cases to determine movement
+		
+		int coordsX = coords.getCol(); int coordsY = coords.getRow();
+		switch(direction) {
+		case 0:
+			coordsX += 1;
+		case 1:
+			coordsX += 1;
+			coordsY -= 1;
+		case 2:
+			coordsY -= 1;
+		case 3:
+			coordsX -= 1;
+			coordsY -= 1;
+		case 4:
+			coordsX -= 1;
+		case 5:
+			coordsX -= 1;
+			coordsY += 1;
+		case 6:
+			coordsY += 1;
+		case 7:
+			coordsX += 1;
+			coordsY += 1;
+		default:
+			coordsX = -1;
+			coordsY = -1;
+		}
+		
+		if (coordsX >= 0 && coordsX < Params.COLS && coordsY >= 0 && coordsY < Params.ROWS) {
+			// coordinate within bounds
+			// check if it lands on prior breadcrumb
+			// TODO: finish this function
+		}
+		
+		
+		return false;
+		
+	}
 	
 	
 }

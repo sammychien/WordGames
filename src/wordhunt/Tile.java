@@ -17,8 +17,8 @@ public class Tile {
 		return isUsed;
 	}
 	
-	public void setUsedFlag() {
-		isUsed = true;
+	public void setUsedFlag(boolean b) {
+		isUsed = b;
 	}
 
 	public Tile(String c, int row, int col) {

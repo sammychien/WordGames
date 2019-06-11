@@ -21,6 +21,13 @@ public class Grid {
 		
 	}
 
+	/*
+	 * Returns true if Tile at Coordinate coords is unused (i.e. used flag is false)
+	 */
+	public boolean checkUsedFlag(Coordinate coords) {
+		// TODO: finish this function 
+		return false;
+	}
 
 	
 	
