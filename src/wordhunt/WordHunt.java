@@ -133,7 +133,11 @@ public class WordHunt {
 			String prefix, ArrayList<String> resultList) { 
 		
 		// if prefix is 8 letters long, return
-		if (prefix.length() >= Params.maxWordLen) return resultList;
+		if (prefix.length() >= Params.maxWordLen) {
+			// remove breadcrumb from this tile
+			currentTile.setUsedFlag(false);
+			return resultList;
+		}
 		
 		// if prefix matches a word in the dictionary, 
 		if (isPrefixInDict(dictionary, prefix)) {
@@ -142,12 +146,24 @@ public class WordHunt {
 		
 		/*
 		 * Now check all surrounding tiles
-		 * First check 
+		 * First check whether or not it can go to the next directions
 		 */
 		
-		
-		
-		return null;
+		for (int i = 0; i < 8; i++) {
+			Coordinate newCoordinate = ableToMove(i, grid, currentTile.getCoordinate());
+			if (newCoordinate != null) {
+				// move to next tile
+				// add breadcrumb
+				Tile newTile = grid.getTile(newCoordinate);
+				// MAKE SURE THIS IS NOTTTT A SHALLOW COPY
+				grid.getTile(newCoordinate).setUsedFlag(true);
+				prefix = prefix + newTile.getLetter();
+				return WordHunt.solveBFS(newTile, grid, dictionary, prefix, resultList);
+			}
+		}
+		// remove breadcrumb
+		currentTile.setUsedFlag(false);
+		return resultList;
 	}
 	
 	/*
@@ -175,10 +191,10 @@ public class WordHunt {
 	 * 
 	 * if parameter "direction" is not an integer between [0,7], then function will return false.
 	 */
-	private static boolean ableToMove(int direction, Grid grid, Coordinate coords) {
+	private static Coordinate ableToMove(int direction, Grid grid, Coordinate coords) {
 		// use cases to determine movement
 		
-		int coordsX = coords.getCol(); int coordsY = coords.getRow();
+		int coordsX = coords.getX(); int coordsY = coords.getY();
 		switch(direction) {
 		case 0:
 			coordsX += 1;
@@ -206,14 +222,18 @@ public class WordHunt {
 		}
 		
 		if (coordsX >= 0 && coordsX < Params.COLS && coordsY >= 0 && coordsY < Params.ROWS) {
-			// coordinate within bounds
+			// new coordinate within bounds
 			// check if it lands on prior breadcrumb
-			// TODO: finish this function
+			try {
+				if (!grid.checkUsedFlag(coordsX, coordsY)) {
+					return new Coordinate(coordsY, coordsX);
+				}
+			} catch (Exception e) {
+				System.out.println("Error in Tile retrieval index");
+				e.printStackTrace();
+			}
 		}
-		
-		
-		return false;
-		
+		return null;
 	}
 	
 	

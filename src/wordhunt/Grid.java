@@ -22,23 +22,46 @@ public class Grid {
 	}
 
 	/*
-	 * Returns true if Tile at Coordinate coords is unused (i.e. used flag is false)
+	 * Returns true if Tile at Coordinate coords is used (i.e. used flag is true)
+	 * 
+	 * TODO: Make unit test for these
+	 * 
 	 */
-	public boolean checkUsedFlag(Coordinate coords) {
-		// TODO: finish this function 
-		// also want to throw an error if something happens here
-		int coordsX = coords.getCol(); int coordsY = coords.getRow();
-		Tile tileAtCoord = tiles.get(Coordinate.calcIndexfromCoord(Params.COLS, coordsY, coordsX));	
+	public boolean checkUsedFlag(Coordinate coords) throws Exception {
+		int coordsX = coords.getX(); int coordsY = coords.getY();
+		return checkUsedFlag(coordsX, coordsY);
+	}
+	
+	public boolean checkUsedFlag(int x, int y) throws Exception {
+		Tile tileAtCoord = tiles.get(Coordinate.calcIndexfromCoord(Params.COLS, y, x));	
+		
 		// this should be the tile that we're talking about.
 		// double check that tileAtCoord has the same coordinates as coordsX and coordsY
-		if (!(coordsX == tileAtCoord.getCoordinate().getCol() && coordsY == tileAtCoord.getCoordinate().getRow())) {
-			// throw new exception here
+		if (!(x == tileAtCoord.getCoordinate().getX() && y == tileAtCoord.getCoordinate().getY())) {
+			throw new Exception();
 		}
-		
-		return false;
+		return tileAtCoord.getIsUsed();
 	}
 
+	public Tile getTile(Coordinate coords) {
+		return getTile(coords.getX(), coords.getY());
+	}
 	
+	public Tile getTile(int x, int y) {
+		if (isWithinBounds(x, y)) {
+			return tiles.get(Coordinate.calcIndexfromCoord(col, y, x));
+		} else {
+			return null;
+		}
+	}
 	
+	/*
+	 *  returns true if (x, y) are within the bounds of the grid
+	 *  otherwise returns false
+	 */
+	public boolean isWithinBounds(int x, int y) {
+		if (x >= 0 && x < col && y >= 0 && y < row) return true;
+		return false;
+	}
 	
 }

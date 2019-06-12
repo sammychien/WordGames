@@ -10,18 +10,18 @@ public class JUnitTests {
 	public void testCalcCoords1() {
 		Coordinate c = Coordinate.calcCoordinate(5, 3, 7);
 		// check col
-		assertTrue(c.getCol() == 1);
+		assertTrue(c.getX() == 1);
 		// check row
-		assertTrue(c.getRow() == 2);
+		assertTrue(c.getY() == 2);
 	}
 	
 	@Test
 	public void testCalcCoords2() {
 		Coordinate c = Coordinate.calcCoordinate(5, 3, 0);
 		// check col
-		assertTrue(c.getCol() == 0);
+		assertTrue(c.getX() == 0);
 		// check row
-		assertTrue(c.getRow() == 0);
+		assertTrue(c.getY() == 0);
 	}
 
 	@Test
@@ -45,25 +45,25 @@ public class JUnitTests {
 	public void testCalcCoords6() {
 		Coordinate c = Coordinate.calcCoordinate(5, 3, 1);
 		// check col
-		assertTrue(c.getCol() == 1);
+		assertTrue(c.getX() == 1);
 		// check row
-		assertTrue(c.getRow() == 0);
+		assertTrue(c.getY() == 0);
 	}
 	@Test
 	public void testCalcCoords7() {
 		Coordinate c = Coordinate.calcCoordinate(5, 3, 3);
 		// check col
-		assertTrue(c.getCol() == 0);
+		assertTrue(c.getX() == 0);
 		// check row
-		assertTrue(c.getRow() == 1);
+		assertTrue(c.getY() == 1);
 	}
 	@Test
 	public void testCalcCoords8() {
 		Coordinate c = Coordinate.calcCoordinate(5, 3, 11);
 		// check col
-		assertTrue(c.getCol() == 2);
+		assertTrue(c.getX() == 2);
 		// check row
-		assertTrue(c.getRow() == 3);
+		assertTrue(c.getY() == 3);
 	}
 	
 }

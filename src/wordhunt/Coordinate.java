@@ -1,28 +1,28 @@
 package wordhunt;
 
 public class Coordinate {
-	private int row;
-	private int col;
+	private int y; // row
+	private int x; // col
 	
-	public Coordinate(int row, int col) {
-		this.row = row;
-		this.col = col;
+	public Coordinate(int y, int x) {
+		this.y = y;
+		this.x = x;
 	}
 
-	public int getRow() {
-		return row;
+	public int getY() {
+		return y;
 	}
 
-	public void setRow(int row) {
-		this.row = row;
+	public void setY(int y) {
+		this.y = y;
 	}
 
-	public int getCol() {
-		return col;
+	public int getX() {
+		return x;
 	}
 
-	public void setCol(int col) {
-		this.col = col;
+	public void setX(int x) {
+		this.x = x;
 	}
 	
 	/*
@@ -34,13 +34,13 @@ public class Coordinate {
 		if (index < 0) return null;
 		if (index >= paramRows*paramCols) return null;
 		
-		int row = index / paramCols;
-		int col = index % paramCols;
-		return new Coordinate(row, col);
+		int y = index / paramCols;
+		int x = index % paramCols;
+		return new Coordinate(y, x);
 	}
 	
-	public static int calcIndexfromCoord(int paramCols, int row, int col) {
-		return row * paramCols + col;
+	public static int calcIndexfromCoord(int paramCols, int y, int x) {
+		return y * paramCols + x;
 	}
 	
 	@Override
@@ -48,7 +48,7 @@ public class Coordinate {
 		if (o == this) return true;
 		if (!(o instanceof Coordinate)) return false;
 		Coordinate c = (Coordinate) o; // typecast so we can compare without compilation error
-		if (this.row == c.getRow() && this.col == c.getCol()) return true;
+		if (this.y == c.getY() && this.x == c.getX()) return true;
 		return false;
 	}
 	
