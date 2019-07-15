@@ -11,18 +11,17 @@ import sbee.FileCreation;
 public class WordHunt {
 
 	// TODO: Replace ArrayList with HashSet
-	
+
 	private static BufferedReader reader;
 	private static BufferedWriter writer;
-	
+
 
 	public static void main(String[] args) {
 		reader = null; writer = null;
-		
+
 		TrieNode root = TrieNode.createRootTrieNode();
-		
-		
-		
+
+
 		try {
 			reader = FileCreation.initializeBR("FilteredWords.txt");
 			writer = FileCreation.initializeBW("WordHuntSoln.txt");
@@ -31,21 +30,12 @@ public class WordHunt {
 			e.printStackTrace();
 		}
 		ArrayList<String> input = readInput();
-		// now we have the Trie and inputList
-		
-		// we want to do Breadth first search
-		/* 
-		 * start with a tile/prefix
-		 * if the prefix is in the dictionary, add to it with the adjacent tiles
-		 * now the prefix is larger. Keep doing this until the prefix matches a word
-		 * if the prefix matches a word, add the word to the results list.
-		 * if the prefix becomes too large or the prefix is not the start to any word in the dictionary, then backtrack and try a different adjacent tile
-		 * if there are no more adjacent tiles, backtrack (simply return)
-		 * 
-		 */
-//		ArrayList<String> results = new ArrayList<String>();
-//		results = solve(input, masterWordList);
-		
+
+
+		ArrayList<String> results = new ArrayList<String>();
+
+
+
 		System.out.println(input);
 
 	}
@@ -63,6 +53,34 @@ public class WordHunt {
 		}
 		input.close();
 		return list;
+	}
+
+	// we want to do Breadth first search
+	/* 
+	 * start with a tile/prefix
+	 * if the prefix is in the dictionary, add to it with the adjacent tiles
+	 * now the prefix is larger. Keep doing this until the prefix matches a word
+	 * if the prefix matches a word, add the word to the results list.
+	 * if the prefix becomes too large or the prefix is not the start to any word in the dictionary, then backtrack and try a different adjacent tile
+	 * if there are no more adjacent tiles, backtrack (simply return)
+	 * 
+	 */
+	private static ArrayList<String> solve(TrieNode root, ArrayList<String> input) {
+		ArrayList<String> results = new ArrayList<String>();
+		Grid grid = new Grid(input); // Populate the Grid
+		for (int i = 0; i < grid.tiles.size(); i++) {
+			Tile t = grid.tiles.get(i);
+			t.setUsedFlag();
+			// solve the grid starting from this tile
+			results = solve(root, grid, results);
+		}
+		return results;
+	}
+
+	private static ArrayList<String> solve(TrieNode root, Grid grid, ArrayList<String> results) {
+		
+		
+		return results;
 	}
 	
 	
