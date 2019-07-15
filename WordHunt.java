@@ -2,11 +2,8 @@ package wordhunt;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
 
 import sbee.FileCreation;
@@ -33,8 +30,8 @@ public class WordHunt {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-//		ArrayList<Character> input = readInput();
-		// now we have masterWordList and inputList
+		ArrayList<String> input = readInput();
+		// now we have the Trie and inputList
 		
 		// we want to do Breadth first search
 		/* 
@@ -49,64 +46,24 @@ public class WordHunt {
 //		ArrayList<String> results = new ArrayList<String>();
 //		results = solve(input, masterWordList);
 		
-		
+		System.out.println(input);
 
 	}
 
-	private static ArrayList<Character> readInput() {
-		Scanner letterInput = new Scanner(System.in);
+	private static ArrayList<String> readInput() {
+		Scanner input = new Scanner(System.in);
 		int cols = Params.COLS; int rows = Params.ROWS;
-		ArrayList<Character> list = new ArrayList<Character>();
+		ArrayList<String> list = new ArrayList<String>();
 		System.out.println("Enter " + cols + " Letters " + rows+ " times:");
 		for (int i = 0; i < cols; i++) {
-			char[] userInputCharArray = letterInput.next().toCharArray();
+			String[] stringArray = TrieNode.toStringArray(input.next());
 			for (int j = 0; j < rows; j++) {
-				list.add(userInputCharArray[j]);
+				list.add(stringArray[j]);
 			}
 		}
-		letterInput.close();
+		input.close();
 		return list;
 	}
-	
-
-	private static ArrayList<String> solve(ArrayList<Character> inputChar, SortedSet<String> dictionary) {
-		ArrayList<String> results = new ArrayList<String>();
-		// instantiate the grid
-		Grid grid = new Grid(inputChar);
-		// grid has Map<Coordinate, Tile> 
-		
-		
-		// go through each tile from anew 
-		for (int i = 0; i < grid.tiles.size(); i++) {
-			// start with this particular tile
-			Tile t = grid.tiles.get(i); 
-			results.addAll(solveBFS(t, grid));
-		}
-		return results;
-	}
-	
-	/*
-	 *  Want to pass in current tile and grid
-	 *  don't forget about removing all breadcrumbs before exiting!
-	 */
-	private static ArrayList<String> solveBFS(Tile currentTile, Grid grid) {
-		ArrayList<String> list = new ArrayList<String>();
-		
-		// make prefix
-		String prefix = "";
-		prefix += currentTile.getC();
-		
-		// testing git branchess
-		list.add(prefix);
-		
-		
-		return list;
-	}
-	
-	
-	
-	
-	
 	
 	
 }
