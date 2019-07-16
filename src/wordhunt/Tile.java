@@ -1,12 +1,12 @@
 package wordhunt;
 
 public class Tile {
-	private String c;
+	private String letter;
 	private Coordinate coords;
 	private boolean isUsed;
 	
-	public String getC() {
-		return c;
+	public String getLetter() {
+		return letter;
 	}
 
 	public Coordinate getCoordinate() {
@@ -21,14 +21,14 @@ public class Tile {
 		isUsed = true;
 	}
 
-	public Tile(String c, int row, int col) {
-		this.c = c;
+	public Tile(String letter, int row, int col) {
+		this.letter = letter;
 		this.coords = new Coordinate(row, col);
 		this.isUsed = false;
 	}
 	
-	public Tile(String c, Coordinate coords) {
-		this.c = c;
+	public Tile(String letter, Coordinate coords) {
+		this.letter = letter;
 		this.coords = coords;
 		this.isUsed = false;
 	}
