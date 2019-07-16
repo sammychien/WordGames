@@ -5,22 +5,19 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * <h1>TrieNode</h1>
+ * The TrieNode class is an implementation of a Trie with Strings
+ * <p>
+ * 
+ * @author sammychien
+ *
+ */
 public class TrieNode {
 
 	private String letter;
 	private Map<String, TrieNode> children;
 	private TrieNode parent;
-	
-//	public static void main(String[] args) {
-//		TrieNode root = createRootTrieNode();
-//		root.addWordToTrie("many");
-//		root.addWordToTrie("man");
-//		root.addWordToTrie("my");
-//		root.addWordToTrie("lie");
-//		root.addWordToTrie("a");
-//		System.out.println(root.doesPrefixExist("ma"));
-//		System.out.println(root.doesWordExist("ma"));
-//	}
 
 	public TrieNode(String letter, TrieNode parent) {
 		this.letter = letter;
@@ -28,20 +25,27 @@ public class TrieNode {
 		this.parent = parent;
 	}
 	
+	/**
+	 * This method creates a root node for the Trie
+	 * @return The root node
+	 */
 	public static TrieNode createRootTrieNode() {
 		return new TrieNode("*", null);
 	}
-	
+
 	/**
-	 * Must act upon a root node
-	 * if word already exists in the trie, return false
+	 * This method adds the input String to the Trie and accepts any node in the Trie.
+	 * <p>
+	 * <b>Note:</b> Acts upon any TrieNode
 	 * 
-	 * @param word to be added to the trie
-	 * @return 
+	 * @param word This is the String that will be added to the Trie
 	 */
 	public void addWordToTrie(String word) {
 		// find root node
 		TrieNode node = findRootTrieNode(this);
+
+		// if the word already exists, return
+		if (node.doesWordExist(word)) return;
 
 		String[] wordArray = toStringArray(word);
 		// add stuff to the node
@@ -59,12 +63,22 @@ public class TrieNode {
 		node.children.put("*", new TrieNode("*", node));
 	}
 
+	/**
+	 * This is a recursive method to find root node
+	 * @param n Any node in the Trie
+	 * @return The root TrieNode
+	 */
 	public static TrieNode findRootTrieNode(TrieNode n) {
 		if (n == null) return null;
 		if (n.letter == "*" && n.parent == null) return n;
 		return findRootTrieNode(n.parent);
 	}
 
+	/**
+	 * This method splits the input String into an array of Strings. Each String in the array has 1 character.
+	 * @param word The String to be split
+	 * @return Array of the split Strings 
+	 */
 	public static String[] toStringArray(String word) {
 		String[] returnArr = new String[word.length()];
 		for (int i = 0; i < word.length(); i++) {
@@ -73,6 +87,13 @@ public class TrieNode {
 		return returnArr;
 	}
 
+	/**
+	 * This method determines if the input String exists within the Trie
+	 * <p>
+	 * <b>Note:</b> Acts upon any TrieNode
+	 * 
+	 * @param word The search parameter
+	 */
 	public boolean doesWordExist(String word) {
 		TrieNode node = findRootTrieNode(this);
 		// word needs to exist completely and the children of the last letter must have "*"
@@ -91,28 +112,34 @@ public class TrieNode {
 	}
 
 	/**
-	 * Assume that root is passed in
-	 * @param reader
-	 * @throws IOException
+	 * This method populates the Trie with a text file using a BufferedReader
+	 * <p>
+	 * <b>Notes:</b> Acts upon any TrieNode; every word in the text file must be separated by a newline character
+	 * 
+	 * @param reader BufferedReader which reads the dictionary text file
+	 * @throws IOException 
 	 */
 	public void populateTrie(BufferedReader reader) throws IOException {
+		TrieNode root = findRootTrieNode(this);
 		String word = reader.readLine();
 		while (word != null) {
-			this.addWordToTrie(word);
+			root.addWordToTrie(word);
 			word = reader.readLine();
 		}
 	}
-	
+
 	/**
-	 * Determines if prefix exists within the trie
+	 * This method determines if the prefix exists within the Trie
+	 * <p>
+	 * <b>Note:</b> Acts upon any TrieNode
 	 * 
-	 * @return
+	 * @param prefix The search parameter
 	 */
 	public boolean doesPrefixExist(String prefix) {
 		TrieNode node = findRootTrieNode(this);
-		
+
 		String[] prefixArray = toStringArray(prefix);
-		
+
 		for (int i = 0; i < prefixArray.length; i++) {
 			String subPrefix = prefixArray[i];
 			if (!node.children.containsKey(subPrefix)) {
@@ -122,6 +149,4 @@ public class TrieNode {
 		}
 		return true;
 	}
-
-
 }

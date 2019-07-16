@@ -7,12 +7,15 @@ import java.util.ArrayList;
 
 import sbee.*;
 
+/**
+ * <h1>Sort</h1>
+ * The Sort class filters and sorts raw dictionary text files
+ * 
+ * @author sammychien
+ *
+ */
 public class Sort {
 
-	/*
-	 * Sort "Most_Common_100K.txt"
-	 */
-	
 	private static BufferedReader input;
 	private static BufferedWriter filteredWriter;
 	private static String inputFile = "Most_Common_100K.txt";
@@ -76,7 +79,6 @@ public class Sort {
 			writer.write(s);
 			writer.newLine();
 		}
-	
 	}
 	
 	/**
@@ -94,10 +96,6 @@ public class Sort {
 			lastElem = s;
 		}
 		return returnList;
-	}
-	
-	public static boolean isWordInFile(String word) {
-		return false;
 	}
 
 }

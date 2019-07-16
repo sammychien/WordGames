@@ -4,6 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+/**
+ * Unit test suite for Coordinate class
+ * 
+ * @author sammychien
+ *
+ */
 public class JUnitTests {
 	
 	@Test
