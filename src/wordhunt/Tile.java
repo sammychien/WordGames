@@ -20,6 +20,10 @@ public class Tile {
 	public void setUsedFlag() {
 		isUsed = true;
 	}
+	
+	public void removeUsedFlag() {
+		isUsed = false;
+	}
 
 	public Tile(String letter, int row, int col) {
 		this.letter = letter;

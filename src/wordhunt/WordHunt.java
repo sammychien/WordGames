@@ -70,18 +70,42 @@ public class WordHunt {
 		Grid grid = new Grid(input); // Populate the Grid
 		for (int i = 0; i < grid.tiles.size(); i++) {
 			Tile t = grid.tiles.get(i);
-			t.setUsedFlag();
 			// solve the grid starting from this tile
-			results = solve(root, grid, results);
+			results = solve(root, grid, results, t, "");
 		}
 		return results;
 	}
 
-	private static ArrayList<String> solve(TrieNode root, Grid grid, ArrayList<String> results) {
+	private static ArrayList<String> solve(TrieNode root, Grid grid, ArrayList<String> results, Tile t, String prefix) {
+		
+		prefix += t.getLetter();
+		t.setUsedFlag();
 		
 		
+		if (!root.doesPrefixExist(prefix)) {
+			// no more you can do here, return 
+			t.removeUsedFlag();
+			return results;
+		}
+		if (root.doesWordExist(prefix)) {
+			results.add(prefix);
+		}
+		// prefix exists here 
+		// check the surrounding tiles, if the tiles haven't been visited
+		for (int i = 0; i < 8; i++) {
+			// "i" represents the direction; 0 is E, go in CCW
+//			Tile nextTile = 
+		}
+		
+		
+		
+
+
+
 		return results;
 	}
 	
 	
+	
+
 }
