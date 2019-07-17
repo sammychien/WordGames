@@ -12,6 +12,6 @@ public class Params {
 	public final static int COLS = 4;
 	public final static int minWordLen = 3;
 	public final static int maxWordLen = 7;
-	public final static String inputFile = "FilteredWords.txt";
-	public final static String outputFile = "WordHuntSoln.txt";
+	public final static String inputFile = "files/FilteredWords.txt";
+	public final static String outputFile = "files/WordHuntSoln.txt";
 }

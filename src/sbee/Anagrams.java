@@ -27,8 +27,8 @@ public class Anagrams {
 		list = new ArrayList<String>();
 		
 		try {
-			reader = FileCreation.initializeBR("6LetterWords.txt");
-			writer = FileCreation.initializeBW("LetterWordsSoln.txt");
+			reader = FileCreation.initializeBR("files/6LetterWords.txt");
+			writer = FileCreation.initializeBW("files/LetterWordsSoln.txt");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -36,7 +36,7 @@ public class Anagrams {
 		
 		numLetters = 5;
 		try {
-			reader = FileCreation.initializeBR("5LetterWords.txt");
+			reader = FileCreation.initializeBR("files/5LetterWords.txt");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -44,7 +44,7 @@ public class Anagrams {
 		
 		numLetters = 4;
 		try {
-			reader = FileCreation.initializeBR("4LetterWords.txt");
+			reader = FileCreation.initializeBR("files/4LetterWords.txt");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -61,7 +61,7 @@ public class Anagrams {
 
 		if (Desktop.isDesktopSupported()) {
 			try {
-				Desktop.getDesktop().edit(new File ("LetterWordsSoln.txt"));
+				Desktop.getDesktop().edit(new File ("files/LetterWordsSoln.txt"));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

@@ -30,17 +30,14 @@ public class Grid {
 	/**
 	 * This overridden toString method is used mainly for debugging
 	 */
-	// TODO: Remove hardcoded indices
 	@Override
 	public String toString() {
 		StringBuilder s = new StringBuilder();
-		s.append(tiles.subList(0, 4).toString());
-		s.append(System.getProperty("line.separator"));
-		s.append(tiles.subList(4, 8).toString());
-		s.append(System.getProperty("line.separator"));
-		s.append(tiles.subList(8, 12));
-		s.append(System.getProperty("line.separator"));
-		s.append(tiles.subList(12, 16));
+		
+		for (int row = 0; row < Params.ROWS; row++) {
+			s.append(tiles.subList(Params.ROWS*Params.COLS, (Params.ROWS+1)*Params.COLS).toString());
+			s.append(System.getProperty("line.separator"));	
+		}
 		return s.toString();
 	}
 }
