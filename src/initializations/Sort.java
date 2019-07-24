@@ -16,8 +16,8 @@ public class Sort {
 
 	private static BufferedReader input;
 	private static BufferedWriter filteredWriter;
-	private static String inputFile = "files/Most_Common_100K.txt";
-	private static String filteredOutput = "files/FilteredWords.txt";
+	private static String inputFile = "files/Dictionaries/Most_Common_100K.txt";
+	private static String filteredOutput = "files/Dictionaries/FilteredWords.txt";
 	private final static int wordCap = 8;
 	private final static int wordMin = 3;
 	

@@ -15,7 +15,8 @@ public class Anagrams {
 	public final static int MAXLEN = 8;
 	public final static int MINLEN = 4;
 	public final static int USERINPUT = 8; // must be same as MAXLEN
-	public final static String OUTPUTFILE = "files/AnagramsSoln.txt";
+	public final static String OUTPUTFILE = "files/Solutions/AnagramsSoln.txt";
+	public final static String INPUTFILEPREFIX = "files/XLetterWords/";
 
 	public static void main(String[] args) {
 		char[] userInput = readInput();
@@ -52,7 +53,7 @@ public class Anagrams {
 	public static ArrayList<String> solve(char[] userInput, BufferedWriter writer, BufferedReader reader) throws IOException {
 		ArrayList<String> list = new ArrayList<String>();
 		for (int numLetters = MAXLEN; numLetters >= MINLEN; numLetters--) {
-			String fileName = "files/" + numLetters + "LetterWords.txt";
+			String fileName = INPUTFILEPREFIX + numLetters + "LetterWords.txt";
 			reader = FileCreation.initializeBR(fileName);
 			writeToFile(userInput, reader, writer, numLetters, list);
 		}

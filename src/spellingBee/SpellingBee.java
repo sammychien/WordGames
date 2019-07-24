@@ -14,8 +14,8 @@ import stringEdits.StringMethods;
 public class SpellingBee {
 
 	public static final int NUMLETTERS = 7;
-	public static final String dictionaryName = "files/FilteredWords.txt";
-	public static final String outputFile = "files/SpellingBeeSoln.txt";
+	public static final String dictionaryName = "files/Dictionaries/FilteredWords.txt";
+	public static final String outputFile = "files/Solutions/SpellingBeeSoln.txt";
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
