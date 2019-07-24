@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import stringEdits.StringMethods;
+
 /**
  * <h1>TrieNode</h1>
  * The TrieNode class is an implementation of a Trie with Strings
@@ -47,7 +49,7 @@ public class TrieNode {
 		// if the word already exists, return
 		if (node.doesWordExist(word)) return;
 
-		String[] wordArray = toStringArray(word);
+		String[] wordArray = StringMethods.toStringArray(word);
 		// add stuff to the node
 		for (int i = 0; i < wordArray.length; i++) {
 			// if the letter already exists, then don't add a new node
@@ -75,19 +77,6 @@ public class TrieNode {
 	}
 
 	/**
-	 * This method splits the input String into an array of Strings. Each String in the array has 1 character.
-	 * @param word The String to be split
-	 * @return Array of the split Strings 
-	 */
-	public static String[] toStringArray(String word) {
-		String[] returnArr = new String[word.length()];
-		for (int i = 0; i < word.length(); i++) {
-			returnArr[i] = word.substring(i, i+1);
-		}
-		return returnArr;
-	}
-
-	/**
 	 * This method determines if the input String exists within the Trie
 	 * <p>
 	 * <b>Note:</b> Acts upon any TrieNode
@@ -97,7 +86,7 @@ public class TrieNode {
 	public boolean doesWordExist(String word) {
 		TrieNode node = findRootTrieNode(this);
 		// word needs to exist completely and the children of the last letter must have "*"
-		String[] wordArray = toStringArray(word);
+		String[] wordArray = StringMethods.toStringArray(word);
 		for (int i = 0; i < wordArray.length; i++) {
 			String subWord = wordArray[i];
 			if (!node.children.containsKey(subWord)) {
@@ -138,7 +127,7 @@ public class TrieNode {
 	public boolean doesPrefixExist(String prefix) {
 		TrieNode node = findRootTrieNode(this);
 
-		String[] prefixArray = toStringArray(prefix);
+		String[] prefixArray = StringMethods.toStringArray(prefix);
 
 		for (int i = 0; i < prefixArray.length; i++) {
 			String subPrefix = prefixArray[i];

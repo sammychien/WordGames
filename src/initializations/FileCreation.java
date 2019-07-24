@@ -1,4 +1,4 @@
-package sbee;
+package initializations;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,14 +11,16 @@ import java.util.Scanner;
 
 public class FileCreation {
 
-	private static BufferedReader input;
-	private static String fileName1 = "FilteredWords.txt";
+	private final static int minWordLen = 4;
+	private final static int maxWordLen = 8;
+	private final static String inputFileName = "FilteredWords.txt";
 
 	public static void main(String[] args) {
 		try {
-			for (int i = 4; i < 9; i++) {
-				input = initializeBR(fileName1);
-				writeLetterWords(i);
+			BufferedReader input = initializeBR(inputFileName);
+			for (int i = minWordLen; i < maxWordLen+1; i++) {
+				writeLetterWords(i, input);
+				input = initializeBR(inputFileName);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -41,13 +43,8 @@ public class FileCreation {
 		return new BufferedWriter(new FileWriter(fileName));
 	}
 	
-	public static void writeLetterWords(int i) throws IOException {
-		BufferedWriter out = null;
-		try {
-			out = new BufferedWriter(new FileWriter(new Integer(i).toString() + "LetterWords.txt"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public static void writeLetterWords(int i, BufferedReader input) throws IOException {
+		BufferedWriter out = new BufferedWriter(new FileWriter(new Integer(i).toString() + "LetterWords.txt"));
 		boolean isLetterFlag = true;
 		String word = input.readLine();
 		while (word != null) {

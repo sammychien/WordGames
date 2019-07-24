@@ -5,7 +5,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import sbee.*;
+import initializations.FileCreation;
 
 /**
  * <h1>Sort</h1>

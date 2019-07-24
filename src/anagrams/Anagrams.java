@@ -1,25 +1,27 @@
-package sbee;
+package anagrams;
 
 import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import initializations.FileCreation;
 
 public class Anagrams {
 
 	public final static int MAXLEN = 8;
 	public final static int MINLEN = 4;
-	public final static int USERINPUT = 8;
+	public final static int USERINPUT = 8; // must be same as MAXLEN
+	public final static String OUTPUTFILE = "files/AnagramsSoln.txt";
 
 	public static void main(String[] args) {
 		char[] userInput = readInput();
 		
 		try {
-			BufferedWriter writer = FileCreation.initializeBW("files/LetterWordsSoln.txt");
+			BufferedWriter writer = FileCreation.initializeBW(OUTPUTFILE);
 			BufferedReader reader = null; //placeholder
 			ArrayList<String> list = solve(userInput, writer, reader);
 			
@@ -32,7 +34,7 @@ public class Anagrams {
 
 		if (Desktop.isDesktopSupported()) {
 			try {
-				Desktop.getDesktop().edit(new File ("files/LetterWordsSoln.txt"));
+				Desktop.getDesktop().edit(new File (OUTPUTFILE));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

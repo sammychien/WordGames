@@ -10,7 +10,8 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 
-import sbee.FileCreation;
+import initializations.FileCreation;
+import stringEdits.StringMethods;
 
 /**
  * <h1>WordHunt</h1>
@@ -88,7 +89,7 @@ public class WordHunt {
 		ArrayList<String> list = new ArrayList<String>();
 		System.out.println("Enter " + cols + " Letters " + rows+ " times:");
 		for (int i = 0; i < cols; i++) {
-			String[] stringArray = TrieNode.toStringArray(input.next());
+			String[] stringArray = StringMethods.toStringArray(input.next());
 			for (int j = 0; j < rows; j++) {
 				list.add(stringArray[j]);
 			}
