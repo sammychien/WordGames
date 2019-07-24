@@ -11,6 +11,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import initializations.FileCreation;
+import stringEdits.StringLengthComparator;
 import stringEdits.StringMethods;
 
 /**
@@ -32,8 +33,8 @@ public class WordHunt {
 		BufferedReader reader = null;
 		BufferedWriter writer = null;
 		try {
-			reader = FileCreation.initializeBR(Params.inputFile);
-			writer = FileCreation.initializeBW(Params.outputFile);
+			reader = FileCreation.initializeBR(WordHuntParams.inputFile);
+			writer = FileCreation.initializeBW(WordHuntParams.outputFile);
 			root.populateTrie(reader);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -51,7 +52,7 @@ public class WordHunt {
 			}
 			writer.close();
 			if (Desktop.isDesktopSupported()) {
-				Desktop.getDesktop().edit(new File(Params.outputFile));
+				Desktop.getDesktop().edit(new File(WordHuntParams.outputFile));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -85,7 +86,7 @@ public class WordHunt {
 	 */
 	private static ArrayList<String> readInput() {
 		Scanner input = new Scanner(System.in);
-		int cols = Params.COLS; int rows = Params.ROWS;
+		int cols = WordHuntParams.COLS; int rows = WordHuntParams.ROWS;
 		ArrayList<String> list = new ArrayList<String>();
 		System.out.println("Enter " + cols + " Letters " + rows+ " times:");
 		for (int i = 0; i < cols; i++) {
@@ -143,7 +144,7 @@ public class WordHunt {
 			Coordinate currentCoords = t.getCoordinate();
 			Coordinate nextCoords = Coordinate.getCoordinateFromDirection(currentCoords, direction);
 			if (nextCoords == null) continue;
-			int tileIndexInGrid = Coordinate.calcIndex(Params.ROWS, Params.COLS, nextCoords);
+			int tileIndexInGrid = Coordinate.calcIndex(WordHuntParams.ROWS, WordHuntParams.COLS, nextCoords);
 			if (grid.tiles.get(tileIndexInGrid).getIsUsed()) continue;
 			else {
 				// next tile is not null and isn't used; add this to the prefix and keep going 

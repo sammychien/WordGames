@@ -26,7 +26,7 @@ public class SpellingBee {
 		ArrayList<String> list = null; //init
 		try {
 			list = SpellingBee.solve(wholeWord, middleLetter, dictionary);
-			list.sort(new wordhunt.StringLengthComparator());
+			list.sort(new stringEdits.StringLengthComparator());
 			BufferedWriter writer = FileCreation.initializeBW(outputFile);
 			for (String s : list) {
 				writer.write(s);

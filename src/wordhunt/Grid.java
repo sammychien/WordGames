@@ -17,8 +17,8 @@ public class Grid {
 	public List<Tile> tiles;
 	
 	public Grid(ArrayList<String> inputChar) {
-		this.row = Params.ROWS;
-		this.col = Params.COLS;
+		this.row = WordHuntParams.ROWS;
+		this.col = WordHuntParams.COLS;
 		// populate the grid with a bunch of Tiles
 		this.tiles = new ArrayList<Tile>();
 		for (int i = 0; i < inputChar.size(); i++) {
@@ -34,8 +34,8 @@ public class Grid {
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		
-		for (int row = 0; row < Params.ROWS; row++) {
-			s.append(tiles.subList(Params.ROWS*Params.COLS, (Params.ROWS+1)*Params.COLS).toString());
+		for (int row = 0; row < WordHuntParams.ROWS; row++) {
+			s.append(tiles.subList(WordHuntParams.ROWS*WordHuntParams.COLS, (WordHuntParams.ROWS+1)*WordHuntParams.COLS).toString());
 			s.append(System.getProperty("line.separator"));	
 		}
 		return s.toString();

@@ -105,7 +105,7 @@ public class Coordinate {
 		default:
 			return null;
 		}
-		if (checkCoordValidity(Params.ROWS, Params.COLS, newCoords)) {
+		if (checkCoordValidity(WordHuntParams.ROWS, WordHuntParams.COLS, newCoords)) {
 			return newCoords;
 		}
 		return null;

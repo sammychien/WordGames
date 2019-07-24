@@ -1,8 +1,10 @@
-package wordhunt;
+package unitTests;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import wordhunt.Coordinate;
 
 /**
  * Unit test suite for Coordinate class
@@ -10,7 +12,7 @@ import org.junit.Test;
  * @author sammychien
  *
  */
-public class JUnitTests {
+public class CoordinateUnitTests {
 	
 	@Test
 	public void testCalcCoords1() {

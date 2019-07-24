@@ -7,7 +7,7 @@ package wordhunt;
  * @author sammychien
  *
  */
-public class Params {
+public class WordHuntParams {
 	public final static int ROWS = 4;
 	public final static int COLS = 4;
 	public final static int minWordLen = 3;
