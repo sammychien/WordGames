@@ -4,58 +4,29 @@ import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Anagrams {
-	
-	public static int numLetters = 6;
-	private static int userInput = 6;
-	private static BufferedReader reader;
-	private static BufferedWriter writer;
-	private static ArrayList<String> list;
-	
-	/*
-	 * Read the file
-	 * Get user input for letters
-	 * print 
-	 */
-	
+
+	public final static int MAXLEN = 8;
+	public final static int MINLEN = 4;
+	public final static int USERINPUT = 8;
+
 	public static void main(String[] args) {
 		char[] userInput = readInput();
-		list = new ArrayList<String>();
 		
 		try {
-			reader = FileCreation.initializeBR("files/6LetterWords.txt");
-			writer = FileCreation.initializeBW("files/LetterWordsSoln.txt");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		writeToFile(userInput);
-		
-		numLetters = 5;
-		try {
-			reader = FileCreation.initializeBR("files/5LetterWords.txt");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		writeToFile(userInput);
-		
-		numLetters = 4;
-		try {
-			reader = FileCreation.initializeBR("files/4LetterWords.txt");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		writeToFile(userInput);
-		
-		System.out.println(list);
-		
-		try {
-			reader.close();
+			BufferedWriter writer = FileCreation.initializeBW("files/LetterWordsSoln.txt");
+			BufferedReader reader = null; //placeholder
+			ArrayList<String> list = solve(userInput, writer, reader);
+			
+			System.out.println(list);
+			
 			writer.close();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
@@ -68,34 +39,45 @@ public class Anagrams {
 		}
 	}
 
-	public static void writeToFile(char[] input) {
-		try {
-			appendToFile(input);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
 	private static char[] readInput() {
 		Scanner letterInput = new Scanner(System.in);
-		System.out.println("Enter 6 Letters: ");
+		System.out.println("Enter " + USERINPUT + " Letters: ");
 		char[] userInputCharArray = letterInput.next().toCharArray();
 		letterInput.close();
 		return userInputCharArray;
 	}
 	
-	public static void appendToFile(char[] array) throws IOException {
+	public static ArrayList<String> solve(char[] userInput, BufferedWriter writer, BufferedReader reader) throws IOException {
+		ArrayList<String> list = new ArrayList<String>();
+		for (int numLetters = MAXLEN; numLetters >= MINLEN; numLetters--) {
+			String fileName = "files/" + numLetters + "LetterWords.txt";
+			reader = FileCreation.initializeBR(fileName);
+			writeToFile(userInput, reader, writer, numLetters, list);
+		}
+		reader.close();
+		return list;
+	}
+	
+	public static ArrayList<String> writeToFile(char[] inputArray, BufferedReader reader, BufferedWriter writer, int numLetters, ArrayList<String> list) {
+		try {
+			list.addAll(appendToFile(inputArray, reader, writer, numLetters, list));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	public static ArrayList<String> appendToFile(char[] array, BufferedReader reader, BufferedWriter writer, int numLetters, ArrayList<String> list) throws IOException {
 		String line = reader.readLine().toLowerCase();
-		
+
 		int numMatches = 0;
-//		boolean letterFound = false;
 		while (line != null) {
 			line = line.toLowerCase();
 			char[] userArray = array.clone();
 			char[] lineArray = line.toCharArray();
 			numMatches = 0;
-			for (int i = 0; i < userInput; i++) {
-				for (int j = 0; j < Anagrams.numLetters; j++) {
+			for (int i = 0; i < USERINPUT; i++) {
+				for (int j = 0; j < numLetters; j++) {
 					if (userArray[i] == lineArray[j]) {
 						numMatches++;
 						// set both those letters to something weird
@@ -105,13 +87,13 @@ public class Anagrams {
 					}
 				}
 			}
-			if (numMatches == Anagrams.numLetters) {
+			if (numMatches == numLetters) {
 				writer.write(line);
 				writer.newLine();
 				list.add(line);
 			}
 			line = reader.readLine();
 		}
-		
+		return list;
 	}
 }
