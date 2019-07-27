@@ -13,19 +13,20 @@ import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import wordLadder.WordLadder;
 /**
  * This is the sample test cases for students
  * @author lisahua
  *
  */
-public class SampleTest {
+public class WordLadderUnitTests {
 	private static Set<String> dict;
 	private static ByteArrayOutputStream outContent;
 
 	@Before // this method is run before every test
 	public void setUp() {
-		Main.initialize();
-		dict = Main.makeDictionary();
+		dict = WordLadder.makeDictionary();
 		outContent = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(outContent));
 	}
@@ -62,7 +63,7 @@ public class SampleTest {
 	/** Has Word Ladder **/
 	@Test(timeout = 30000)
 	public void testBFS1() {
-		ArrayList<String> res = Main.getWordLadderBFS("hello", "cells");
+		ArrayList<String> res = WordLadder.getWordLadderBFS("hello", "cells");
 
 		if (res != null) {
 			HashSet<String> set = new HashSet<String>(res);
@@ -75,7 +76,7 @@ public class SampleTest {
 
 	@Test(timeout = 30000)
 	public void testDFS1() {
-		ArrayList<String> res = Main.getWordLadderDFS("hello", "cells");
+		ArrayList<String> res = WordLadder.getWordLadderDFS("hello", "cells");
 		if (res != null) {
 			HashSet<String> set = new HashSet<String>(res);
 			assertEquals(set.size(), res.size());
@@ -88,7 +89,7 @@ public class SampleTest {
 	/** No Word Ladder **/
 	@Test(timeout = 30000)
 	public void testBFS2() {
-		ArrayList<String> res = Main.getWordLadderBFS("aldol", "drawl");
+		ArrayList<String> res = WordLadder.getWordLadderBFS("aldol", "drawl");
 		if (res != null) {
 			HashSet<String> set = new HashSet<String>(res);
 			assertEquals(set.size(), res.size());
@@ -99,7 +100,7 @@ public class SampleTest {
 
 	@Test(timeout = 30000)
 	public void testDFS2() {
-		ArrayList<String> res = Main.getWordLadderDFS("aldol", "drawl");
+		ArrayList<String> res = WordLadder.getWordLadderDFS("aldol", "drawl");
 		if (res != null) {
 			HashSet<String> set = new HashSet<String>(res);
 			assertEquals(set.size(), res.size());
@@ -109,16 +110,16 @@ public class SampleTest {
 
 	@Test(timeout = 30000)
 	public void testPrintLadder() {
-		ArrayList<String> res = Main.getWordLadderBFS("twixt", "hakus");
+		ArrayList<String> res = WordLadder.getWordLadderBFS("twixt", "hakus");
 		outContent.reset();
-		Main.printLadder(res);
+		WordLadder.printLadder(res);
 		String str = outContent.toString().replace("\n", "").replace(".", "").trim();
 		assertEquals("no word ladder can be found between twixt and hakus", str);
 	}
 	
 	@Test
 	public void testMainBFS() {
-		ArrayList<String> result = Main.getWordLadderBFS("tongs", "tardo");
+		ArrayList<String> result = WordLadder.getWordLadderBFS("tongs", "tardo");
 		if (result == null) {
 			System.out.println("no word ladder can be found tongs and tardo");
 		} else {
@@ -128,7 +129,7 @@ public class SampleTest {
 		}
 		System.out.println();
 		System.out.println();
-		result = Main.getWordLadderBFS("plain", "prigs");
+		result = WordLadder.getWordLadderBFS("plain", "prigs");
 		if (result == null) {
 			System.out.println("no word ladder can be found between plain and prigs");
 		} else {
@@ -140,7 +141,7 @@ public class SampleTest {
 	
 	@Test
 	public void testMainBFS1() {
-		ArrayList<String> result = Main.getWordLadderBFS("ahhed", "pixel");
+		ArrayList<String> result = WordLadder.getWordLadderBFS("ahhed", "pixel");
 		if (result == null) {
 			System.out.println("no word ladder can be found between ahhed and pixel");
 		} else {
@@ -148,7 +149,7 @@ public class SampleTest {
 				System.out.println(word);
 			}
 		}
-		result = Main.getWordLadderBFS("porky", "pixel");
+		result = WordLadder.getWordLadderBFS("porky", "pixel");
 		if (result == null) {
 			System.out.println("no word ladder can be found between porky and pixel");
 		} else {
