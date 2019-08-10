@@ -34,7 +34,7 @@ public class Coordinate {
 
 	/**
 	 * 
-	 * @param paramRows
+	 * @param paramRows 
 	 * @param paramCols
 	 * @param index
 	 * @return Coordinate based on number of rows and cols from Params
