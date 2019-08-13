@@ -22,6 +22,7 @@ import stringEdits.StringMethods;
  * 
  * @author sammychien
  *
+ * 
  */
 public class WordHunt {
 	
