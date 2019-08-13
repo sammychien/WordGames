@@ -164,10 +164,3 @@ fabric.properties
 .history
 
 # End of https://www.gitignore.io/api/eclipse,intellij,visualstudiocode
-
-# start of personal file tracking
-
-# solutions directory in files
-files/solutions/*
-
-
