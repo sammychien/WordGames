@@ -13,8 +13,8 @@ public class FileCreation {
 
 	private final static int minWordLen = 4;
 	private final static int maxWordLen = 8;
-	private final static String inputFileName = "files/Dictionaries/FilteredWords.txt";
-	private final static String outputFilePrefix = "files/XLetterWords/";
+	private final static String inputFileName = FileNames.dictionaryPrefix + "/FilteredWords.txt";
+	private final static String outputFilePrefix = FileNames.xLetterWordsPrefix;
 
 	public static void main(String[] args) {
 		try {
@@ -45,7 +45,7 @@ public class FileCreation {
 	}
 	
 	public static void writeLetterWords(int i, BufferedReader input) throws IOException {
-		BufferedWriter out = new BufferedWriter(new FileWriter(outputFilePrefix + new Integer(i).toString() + "LetterWords.txt"));
+		BufferedWriter out = new BufferedWriter(new FileWriter(outputFilePrefix + String.valueOf(i) + "LetterWords.txt"));
 		boolean isLetterFlag = true;
 		String word = input.readLine();
 		while (word != null) {

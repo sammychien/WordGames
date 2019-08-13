@@ -164,3 +164,7 @@ fabric.properties
 .history
 
 # End of https://www.gitignore.io/api/eclipse,intellij,visualstudiocode
+
+# Add gitignore of files/solutions
+WordGames/lib/files/Solutions
+

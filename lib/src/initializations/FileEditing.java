@@ -16,8 +16,8 @@ public class FileEditing {
 	
 	public static void main(String[] args) throws IOException {
 		try {
-			reader = FileCreation.initializeBR("files/Dictionaries/wiki-100k.txt");
-			writer = FileCreation.initializeBW("files/Dictionaries/Most_Common_100K.txt");
+			reader = FileCreation.initializeBR(FileNames.dictionaryPrefix + "/wiki-100k.txt");
+			writer = FileCreation.initializeBW(FileNames.dictionaryPrefix + "/Most_Common_100K.txt");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
