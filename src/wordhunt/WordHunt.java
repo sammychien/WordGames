@@ -21,7 +21,6 @@ import stringEdits.StringMethods;
  * Assumes 4x4 configuration for the game
  * 
  * @author sammychien
- *
  * 
  */
 public class WordHunt {
