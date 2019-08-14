@@ -153,5 +153,7 @@ fabric.properties
 .history
 
 # Add gitignore of files/solutions
-**/Solutions/
+**/Solutions/AnagramsSoln.txt
+**/Solutions/SpellingBeeSoln.txt
+**/Solutions/WordHuntSoln.txt
 

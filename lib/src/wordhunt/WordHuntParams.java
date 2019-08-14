@@ -14,6 +14,6 @@ public class WordHuntParams {
 	public final static int COLS = 4;
 	public final static int minWordLen = 3;
 	public final static int maxWordLen = 7;
-	public final static String inputFile = FileNames.dictionaryPrefix + "/FilteredWords.txt";
-	public final static String outputFile = FileNames.solutionsPrefix + "/WordHuntSoln.txt";
+	public final static String inputFile = FileNames.dictionaryDirectory + "/FilteredWords.txt";
+	public final static String outputFile = FileNames.solutionsDirectory + "/WordHuntSoln.txt";
 }

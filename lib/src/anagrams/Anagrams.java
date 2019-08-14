@@ -16,8 +16,8 @@ public class Anagrams {
 	public final static int MAXLEN = 8;
 	public final static int MINLEN = 4;
 	public final static int USERINPUT = 8; // must be same as MAXLEN
-	public final static String OUTPUTFILE = FileNames.solutionsPrefix + "/AnagramsSoln.txt";
-	public final static String INPUTFILEPREFIX = FileNames.xLetterWordsPrefix;
+	public final static String OUTPUTFILE = FileNames.solutionsDirectory + "/AnagramsSoln.txt";
+	public final static String INPUTFILEPREFIX = FileNames.xLetterWords;
 
 	public static void main(String[] args) {
 		char[] userInput = readInput();

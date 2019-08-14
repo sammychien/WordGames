@@ -8,9 +8,9 @@ package initializations;
  *
  */
 public class FileNames {
-    public final static String filesPrefix = "lib/files";
-    public final static String dictionaryPrefix = filesPrefix + "/Dictionaries";
-    public final static String solutionsPrefix = filesPrefix + "/Solutions";
-    public final static String xLetterWordsPrefix = filesPrefix + "/XLetterWords";
+    public final static String fileDirectory = "WordGames/lib/files";
+    public final static String dictionaryDirectory = fileDirectory + "/Dictionaries";
+    public final static String solutionsDirectory = fileDirectory + "/Solutions";
+    public final static String xLetterWords = fileDirectory + "/XLetterWords";
 
 }
