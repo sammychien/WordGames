@@ -8,7 +8,7 @@ package initializations;
  *
  */
 public class FileNames {
-    public final static String filesPrefix = "WordGames/lib/files";
+    public final static String filesPrefix = "lib/files";
     public final static String dictionaryPrefix = filesPrefix + "/Dictionaries";
     public final static String solutionsPrefix = filesPrefix + "/Solutions";
     public final static String xLetterWordsPrefix = filesPrefix + "/XLetterWords";

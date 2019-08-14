@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - WordHunt",
+            "request": "launch",
+            "mainClass": "wordhunt.WordHunt",
+            "projectName": "SpellingBee"
+        }
+    ]
+}
