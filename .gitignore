@@ -1,7 +1,3 @@
-
-# Created by https://www.gitignore.io/api/eclipse,intellij,visualstudiocode
-# Edit at https://www.gitignore.io/?templates=eclipse,intellij,visualstudiocode
-
 ### Eclipse ###
 .metadata
 bin/
@@ -58,13 +54,6 @@ local.properties
 .cache-main
 .scala_dependencies
 .worksheet
-
-### Eclipse Patch ###
-# Eclipse Core
-.project
-
-# JDT-specific (Eclipse Java Development Tools)
-.classpath
 
 # Annotation Processing
 .apt_generated
@@ -162,8 +151,6 @@ fabric.properties
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
-
-# End of https://www.gitignore.io/api/eclipse,intellij,visualstudiocode
 
 # Add gitignore of files/solutions
 **/Solutions/
