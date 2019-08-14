@@ -40,36 +40,8 @@ public class FileCreation {
 		return new FileWriter(new File(fileName));
 	}
 
-	public static BufferedWriter initializeBW(String fileName) {
-		// first test if the file exists
-		BufferedWriter writer = null;
-		try {
-			File file = new File(fileName);
-			if (!file.exists()) {
-				// file doesn't exist
-				// create the file here
-				file.createNewFile();
-
-			}
-			writer = new BufferedWriter(new FileWriter(file));
-			// try {
-			// writer = new BufferedWriter(new FileWriter(fileName));
-			// } catch (FileNotFoundException e) {
-			// // create new file here
-			// File file = new File(fileName);
-			// if (file.createNewFile()) {
-			// writer = new BufferedWriter(new FileWriter(file));
-			// } else {
-			// // file not created successfully
-			// System.out.println("File creation not successful");
-			// e.printStackTrace();
-			// }
-
-			// }
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return writer;
+	public static BufferedWriter initializeBW(String fileName) throws IOException {
+		return new BufferedWriter(new FileWriter(fileName));
 	}
 
 	public static void writeLetterWords(int i, BufferedReader input) throws IOException {
